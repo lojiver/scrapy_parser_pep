@@ -2,9 +2,6 @@ from datetime import datetime
 
 from pep_parse.settings import BASE_DIR
 
-now = datetime.now()
-timestamp = now.strftime('%Y-%m-%dT%H-%M-%S')
-
 
 class PepParsePipeline:
     def __init__(self):
@@ -16,6 +13,8 @@ class PepParsePipeline:
     def close_spider(self, spider):
         results_dir = BASE_DIR / 'results'
         results_dir.mkdir(exist_ok=True)
+        now = datetime.now()
+        timestamp = now.strftime('%Y-%m-%dT%H-%M-%S')
         file_name = f'status_summary_{timestamp}.csv'
         file_path = results_dir / file_name
         total = sum(self.status_count.values())
@@ -27,8 +26,5 @@ class PepParsePipeline:
 
     def process_item(self, item, spider):
         status = item['status']
-        if status in self.status_count:
-            self.status_count[status] += 1
-        else:
-            self.status_count[status] = 1
+        self.status_count[status] = self.status_count.get(status, 0) + 1
         return item
