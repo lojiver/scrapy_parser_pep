@@ -1,8 +1,5 @@
-# from datetime import datetime
 from pathlib import Path
 
-# now = datetime.now()
-# timestamp = now.strftime('%Y-%m-%dT%H-%M-%S')
 
 BASE_DIR = Path(__file__).parent.parent
 BOT_NAME = 'pep_parse'
@@ -17,7 +14,6 @@ FEEDS = {
         'format': 'csv',
         'fields': ['number', 'name', 'status'],
         'overwrite': True,
-        # 'encoding': 'utf-8'
     },
 }
 
