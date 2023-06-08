@@ -17,7 +17,7 @@ git clone
 ```
 
 ```
-cd cat_charity_fund/
+cd scrapy_parser_pep/
 ```
 
 Cоздать и активировать виртуальное окружение:
